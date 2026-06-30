@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>京浜東北線 Next Train</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div>
+        <p class="eyebrow">JR 京浜東北線</p>
+        <h1>Next Train</h1>
+      </div>
+      <button id="themeBtn" aria-label="toggle dark mode">🌙</button>
+    </header>
+
+    <section class="card controls">
+      <label>
+        車站
+        <select id="station">
+          <option value="kamata">蒲田</option>
+          <option value="oimachi">大井町</option>
+          <option value="shinagawa">品川</option>
+          <option value="tokyo">東京</option>
+        </select>
+      </label>
+
+      <label>
+        方向
+        <select id="direction">
+          <option value="north">北行：東京・上野・大宮方面</option>
+          <option value="south">南行：川崎・横浜・大船方面</option>
+        </select>
+      </label>
+
+      <label>
+        日子
+        <select id="dayType">
+          <option value="weekday">平日</option>
+          <option value="saturday">星期六</option>
+          <option value="sunday">星期日/祝日</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="card next">
+      <p class="label">下一班車</p>
+      <div id="nextTime" class="next-time">--:--</div>
+      <p id="countdown" class="countdown">請選擇車站</p>
+    </section>
+
+    <section class="card">
+      <div class="row-title">
+        <h2>之後 5 班</h2>
+        <button id="nowBtn">用現在時間</button>
+      </div>
+      <ul id="trainList" class="train-list"></ul>
+    </section>
+
+    <footer>
+      <p>※ 目前係示範資料。正式使用前，請將 data.js 入面嘅時刻改成 JR 官方時刻表。</p>
+    </footer>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

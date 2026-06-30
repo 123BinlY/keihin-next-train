@@ -1,0 +1,9 @@
+{
+  "name": "京浜東北線 Next Train",
+  "short_name": "Keihin Next",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220",
+  "icons": []
+}
