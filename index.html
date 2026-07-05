@@ -2,38 +2,49 @@
 <html lang="zh-HK">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0b1220" />
   <title>京浜東北線 Next Train</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <main class="app">
     <header>
       <div>
-        <p class="eyebrow">JR 京浜東北線</p>
-        <h1>Next Train</h1>
+        <p class="eyebrow" data-i18n="eyebrow">JR 京浜東北線</p>
+        <h1 data-i18n="title">下一班車</h1>
       </div>
-      <button id="themeBtn" class="icon-btn" type="button" aria-label="切換 Dark Mode">🌙</button>
+
+      <div class="header-actions">
+        <select id="languageSelect" class="language-select" aria-label="Language">
+          <option value="ja">JP 日本語</option>
+          <option value="zh">CN 中文</option>
+          <option value="en">US English</option>
+        </select>
+
+        <button id="themeBtn" class="icon-btn" type="button" aria-label="切換主題">🌙</button>
+      </div>
     </header>
 
-    <section class="card commute-card" aria-label="蒲田大井町一鍵模式">
+    <section class="card commute-card" aria-label="蒲田大井町快捷模式">
       <div class="row-title">
         <div>
-          <h2>蒲田 ⇄ 大井町</h2>
-          <p class="hint">你每日通勤用，一撳即切換方向。</p>
+          <h2 data-i18n="commuteTitle">蒲田 ⇄ 大井町</h2>
+          <p class="hint" data-i18n="commuteHint">你每日通勤用，一撳即切換方向。</p>
         </div>
       </div>
+
       <div class="quick-grid">
-        <button id="goWorkBtn" type="button">出勤：蒲田 → 大井町</button>
-        <button id="goHomeBtn" type="button">放工：大井町 → 蒲田</button>
+        <button id="goWorkBtn" type="button" data-i18n="goWork">出勤：蒲田 → 大井町</button>
+        <button id="goHomeBtn" type="button" data-i18n="goHome">放工：大井町 → 蒲田</button>
       </div>
     </section>
 
     <section class="card controls" aria-label="時刻表設定">
       <label>
-        車站
+        <span data-i18n="stationLabel">車站</span>
         <select id="station">
           <option value="kamata">蒲田</option>
           <option value="oimachi">大井町</option>
@@ -43,55 +54,57 @@
       </label>
 
       <label>
-        方向
+        <span data-i18n="directionLabel">方向</span>
         <select id="direction">
-          <option value="north">北行：東京・上野・大宮方面</option>
-          <option value="south">南行：川崎・横浜・大船方面</option>
+          <option value="north" data-i18n="northOption">北行：東京・上野・大宮方面</option>
+          <option value="south" data-i18n="southOption">南行：川崎・横浜・大船方面</option>
         </select>
       </label>
 
       <label>
-        日子
+        <span data-i18n="dayLabel">日子</span>
         <select id="dayType">
-          <option value="weekday">平日</option>
-          <option value="saturday">星期六</option>
-          <option value="sunday">星期日/祝日</option>
+          <option value="weekday" data-i18n="weekdayOption">平日</option>
+          <option value="saturday" data-i18n="saturdayOption">星期六</option>
+          <option value="sunday" data-i18n="sundayOption">星期日/祝日</option>
         </select>
       </label>
     </section>
 
-    <section class="card favorite-card" aria-label="收藏車站">
+    <section class="card favorite-card" aria-label="收藏">
       <div class="row-title">
         <div>
-          <h2>收藏</h2>
-          <p class="hint">會記住車站、方向、日子。</p>
+          <h2 data-i18n="favoriteTitle">收藏</h2>
+          <p class="hint" data-i18n="favoriteHint">會記住車站、方向、日子。</p>
         </div>
-        <button id="addFavoriteBtn" type="button">＋收藏目前設定</button>
+        <button id="addFavoriteBtn" type="button" data-i18n="addFavorite">＋收藏目前設定</button>
       </div>
+
       <div id="favoriteList" class="favorite-list"></div>
     </section>
 
     <section class="card next" aria-label="下一班車">
-      <p class="label">下一班車</p>
+      <p class="label" data-i18n="nextTrainLabel">下一班車</p>
       <div id="nextTime" class="next-time">--:--</div>
-      <p id="countdown" class="countdown">請選擇車站</p>
-      <p id="statusLine" class="status-line">--</p>
+      <p id="countdown" class="countdown">--</p>
+      <p id="statusLine" class="status-line">請選擇車站</p>
     </section>
 
-    <section class="card">
+    <section class="card" aria-label="之後班次">
       <div class="row-title">
         <div>
-          <h2>之後 5 班</h2>
+          <h2 data-i18n="upcomingTitle">之後 5 班</h2>
           <p id="autoDayNote" class="hint">已自動判斷今日班別。</p>
         </div>
-        <button id="nowBtn" type="button">用現在時間</button>
+        <button id="nowBtn" type="button" data-i18n="useNow">用現在時間</button>
       </div>
+
       <ul id="trainList" class="train-list"></ul>
     </section>
 
     <footer>
-      ※ 目前係示範資料。正式使用前，請將 data.js 入面嘅時刻改成 JR 官方時刻表。<br />
-      ※ 平日／星期六／休日會依照手機或電腦目前日期自動選擇，但日本祝日仍建議手動確認。
+      <p data-i18n="footerNote1">※ 目前係示範資料。正式使用前，請將 data.js 入面嘅時刻改成 JR 官方時刻表。</p>
+      <p data-i18n="footerNote2">※ 平日／星期六／休日會依照手機或電腦目前日期自動選擇，但日本祝日仍建議手動確認。</p>
     </footer>
   </main>
 
