@@ -7,6 +7,7 @@
   --accent: #69d2ff;
   --line: #263852;
   --button: #1c2b45;
+  --danger: #ff7b7b;
 }
 
 .light {
@@ -18,6 +19,7 @@
   --accent: #006dd9;
   --line: #d9e2ee;
   --button: #eef3f9;
+  --danger: #c62828;
 }
 
 * { box-sizing: border-box; }
@@ -28,6 +30,10 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Noto Sans HK", sans-serif;
   background: radial-gradient(circle at top, #1b3b73 0%, var(--bg) 42%);
   color: var(--text);
+}
+
+.light body {
+  background: radial-gradient(circle at top, #dcecff 0%, var(--bg) 42%);
 }
 
 .app {
@@ -82,7 +88,8 @@ label {
   font-weight: 700;
 }
 
-select, button {
+select,
+button {
   width: 100%;
   min-height: 52px;
   border: 1px solid var(--line);
@@ -94,16 +101,30 @@ select, button {
   padding: 0 14px;
 }
 
-button {
-  cursor: pointer;
-}
+button { cursor: pointer; }
+button:active { transform: translateY(1px); }
 
+.icon-btn,
 #themeBtn {
   width: 56px;
   height: 56px;
   min-height: 56px;
   border-radius: 50%;
   font-size: 22px;
+  padding: 0;
+}
+
+.quick-grid {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.hint {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
 }
 
 .next {
@@ -128,23 +149,31 @@ button {
 
 .countdown {
   margin: 0;
-  font-size: 24px;
-  font-weight: 800;
+  font-size: clamp(26px, 7vw, 42px);
+  font-weight: 900;
   color: var(--accent);
+}
+
+.status-line {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-weight: 700;
 }
 
 .row-title {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
 }
 
-#nowBtn {
+#nowBtn,
+#addFavoriteBtn {
   width: auto;
   min-height: 44px;
   font-size: 15px;
   padding: 0 12px;
+  white-space: nowrap;
 }
 
 .train-list {
@@ -159,6 +188,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  gap: 16px;
   padding: 16px;
   border-radius: 18px;
   background: rgba(255,255,255,.055);
@@ -170,10 +200,45 @@ button {
   font-weight: 900;
 }
 
+.time small {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+
 .min {
   color: var(--muted);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 800;
+  text-align: right;
+}
+
+.favorite-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.favorite-item {
+  display: grid;
+  grid-template-columns: 1fr 52px;
+  gap: 10px;
+}
+
+.favorite-item button:first-child {
+  text-align: left;
+}
+
+.delete-btn {
+  color: var(--danger);
+  font-size: 28px;
+  padding: 0;
+}
+
+.empty {
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.5;
 }
 
 footer {
@@ -183,7 +248,26 @@ footer {
 }
 
 @media (min-width: 700px) {
-  .controls {
-    grid-template-columns: 1fr 1.4fr 1fr;
+  .controls { grid-template-columns: 1fr 1.4fr 1fr; }
+  .quick-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 520px) {
+  .row-title {
+    display: grid;
+  }
+
+  #nowBtn,
+  #addFavoriteBtn {
+    width: 100%;
+  }
+
+  .train-list li {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .min {
+    text-align: left;
   }
 }
