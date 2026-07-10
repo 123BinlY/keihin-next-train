@@ -466,9 +466,17 @@ function init() {
 
   setInterval(render, 1000);
 
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("sw.js").catch(() => {});
-  }
-}
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", async () => {
+    try {
+      const registration = await navigator.serviceWorker.register("./sw.js", {
+        updateViaCache: "none"
+      });
 
+      await registration.update();
+    } catch (error) {
+      console.error("Service Worker registration failed:", error);
+    }
+  });
+}
 init();
