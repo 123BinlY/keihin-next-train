@@ -37,18 +37,17 @@ self.addEventListener("activate", event => {
 
 // 有網絡時優先讀最新版；斷網時先用 Cache
 self.addEventListener("fetch", event => {
-  if (event.request.method !== "GET") {
+  if (
+    event.request.method !== "GET" ||
+    !event.request.url.startsWith(self.location.origin)
+  ) {
     return;
   }
 
   event.respondWith(
     fetch(event.request)
       .then(response => {
-        if (
-          response &&
-          response.status === 200 &&
-          response.type === "basic"
-        ) {
+        if (response && response.status === 200) {
           const responseCopy = response.clone();
 
           caches.open(CACHE_NAME).then(cache => {
