@@ -457,7 +457,10 @@ function init() {
   renderStaticSelectOptions();
 
   const hasLastSetting = loadLastSetting();
-  if (!hasLastSetting) autoDayType();
+
+  if (!hasLastSetting) {
+    autoDayType();
+  }
 
   bindEvents();
   applyLanguage(currentLang);
@@ -465,7 +468,9 @@ function init() {
   render();
 
   setInterval(render, 1000);
+}
 
+// Service Worker registration
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", async () => {
     try {
@@ -479,4 +484,6 @@ if ("serviceWorker" in navigator) {
     }
   });
 }
+
+// Start the app once
 init();
