@@ -1,4 +1,4 @@
-const CACHE_NAME = "keihin-next-v3";
+const CACHE_NAME = "keihin-next-v4";
 
 const FILES = [
   "./",
