@@ -819,4 +819,284 @@ footer {
   .min {
     text-align: left;
   }
+}/* ==================================================
+   DARK MODE
+   Default mode: black + yellow station display style
+   Light mode: keep the current colourful MTR design
+   ================================================== */
+
+html:not(.light) {
+  color-scheme: dark;
+
+  --bg: #050505;
+  --panel: #111111;
+  --panel-strong: #151515;
+  --text: #ffffff;
+  --muted: #b7b7b7;
+  --line: #3b3b3b;
+  --button: #202020;
+  --danger: #ff6b6b;
+
+  --mtr-navy: #ffffff;
+  --mtr-blue: #252525;
+  --mtr-red: #ffd900;
+  --mtr-magenta: #ffd900;
+  --mtr-yellow: #ffd900;
+  --mtr-green: #00a66a;
+}
+
+/* Main background */
+
+html:not(.light),
+html:not(.light) body {
+  background: #050505;
+  color: #ffffff;
+}
+
+html:not(.light) body {
+  background:
+    radial-gradient(
+      circle at top,
+      #252000 0%,
+      #080808 38%,
+      #050505 100%
+    );
+}
+
+/* Top line banner */
+
+html:not(.light) .mtr-top-strip {
+  color: #000000;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ffd900 0%,
+      #ffd900 58%,
+      #ffec70 58%,
+      #ffec70 100%
+    );
+
+  border-bottom-color: #ffffff;
+}
+
+/* Header */
+
+html:not(.light) header {
+  background: #080808;
+  border-bottom-color: #333333;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.65);
+}
+
+html:not(.light) .eyebrow {
+  color: #ffd900;
+}
+
+html:not(.light) h1,
+html:not(.light) h2 {
+  color: #ffffff;
+}
+
+/* Language selector and buttons */
+
+html:not(.light) select,
+html:not(.light) button {
+  color: #ffffff;
+  background: #202020;
+  border-color: #454545;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+html:not(.light) button:hover {
+  color: #000000;
+  background: #ffd900;
+  border-color: #ffd900;
+}
+
+html:not(.light) #themeBtn {
+  color: #ffd900;
+  background: #202020;
+  border-color: #454545;
+}
+
+/* MTR station screen in dark mode */
+
+html:not(.light) .mtr-station-screen {
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      180deg,
+      #181818 0%,
+      #101010 60%,
+      #080808 100%
+    );
+
+  border-color: #5b5b5b;
+
+  box-shadow:
+    inset 0 0 0 2px #222222,
+    0 10px 28px rgba(0, 0, 0, 0.75);
+}
+
+html:not(.light) .mtr-station-screen::before {
+  background:
+    linear-gradient(
+      110deg,
+      rgba(255, 217, 0, 0.08) 0%,
+      rgba(255, 255, 255, 0) 35%
+    );
+}
+
+html:not(.light) .station-name strong,
+html:not(.light) .station-name em {
+  color: #ffffff;
+}
+
+html:not(.light) .station-dot {
+  background: #ffd900;
+  border-color: #ffffff;
+
+  box-shadow:
+    0 0 0 3px #111111,
+    0 0 18px rgba(255, 217, 0, 0.45);
+}
+
+html:not(.light) .direction-display {
+  color: #000000;
+  background: #ffd900;
+  border-color: #ffd900;
+}
+
+/* Route line */
+
+html:not(.light) .route-line::before {
+  background:
+    linear-gradient(
+      90deg,
+      #ffd900 0%,
+      #ffd900 49%,
+      #ffffff 49%,
+      #ffffff 100%
+    );
+}
+
+html:not(.light) .route-stop {
+  background: #111111;
+  border-color: #ffffff;
+}
+
+html:not(.light) .route-stop.passed {
+  background: #ffd900;
+  border-color: #ffffff;
+}
+
+html:not(.light) .route-stop.current {
+  background: #ffd900;
+  border-color: #ffffff;
+
+  box-shadow:
+    0 0 0 4px #111111,
+    0 0 0 6px #ffd900,
+    0 0 20px rgba(255, 217, 0, 0.55);
+}
+
+/* Cards */
+
+html:not(.light) .card {
+  color: #ffffff;
+  background: rgba(17, 17, 17, 0.97);
+  border-color: #3e3e3e;
+
+  box-shadow:
+    0 5px 18px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+html:not(.light) .commute-card,
+html:not(.light) .controls,
+html:not(.light) .favorite-card {
+  border-top-color: #ffd900;
+}
+
+html:not(.light) label {
+  color: #dddddd;
+}
+
+html:not(.light) .hint,
+html:not(.light) .empty {
+  color: #aaaaaa;
+}
+
+/* Next train display */
+
+html:not(.light) .next {
+  background:
+    linear-gradient(
+      180deg,
+      #171717 0%,
+      #0d0d0d 100%
+    );
+
+  border-color: #505050;
+}
+
+html:not(.light) .next::before {
+  background: #ffd900;
+}
+
+html:not(.light) .label {
+  color: #dddddd;
+}
+
+html:not(.light) .next-time {
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
+}
+
+html:not(.light) .countdown {
+  color: #ffd900;
+  text-shadow: 0 0 14px rgba(255, 217, 0, 0.25);
+}
+
+html:not(.light) .status-line {
+  color: #000000;
+  background: #ffd900;
+}
+
+/* Upcoming train list */
+
+html:not(.light) .train-list {
+  background: #101010;
+  border-color: #555555;
+}
+
+html:not(.light) .train-list li,
+html:not(.light) .train-list li:nth-child(even) {
+  background: #111111;
+  border-bottom-color: #353535;
+}
+
+html:not(.light) .train-list li:nth-child(even) {
+  background: #181818;
+}
+
+html:not(.light) .time {
+  color: #ffffff;
+}
+
+html:not(.light) .time small,
+html:not(.light) .min {
+  color: #ffd900;
+}
+
+/* Footer */
+
+html:not(.light) footer {
+  color: #999999;
+  background: rgba(17, 17, 17, 0.8);
+  border-top-color: #ffd900;
 }
